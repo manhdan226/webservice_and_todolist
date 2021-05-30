@@ -33,25 +33,26 @@ def create_table(name, key):
     )
 
     table.meta.client.get_waiter('table_exists').wait(TableName=name)
-    print("Done!")
+    #print("Done!")
     
 
 def delete_table(table):
     table.delete()
 
-def insert_table(table):
-    item = {"id": "1"}#, "task": "Bài tập học phần SOA", "description": "Hoàn thành phần frontend-backend và webservice", "deadline": "30/05/2021", "status": "50%"}
-    table.put_item(Item=item)
+def insert_table(table, data):
+    for item in data:#, "task": "Bài tập học phần SOA", "description": "Hoàn thành phần frontend-backend và webservice", "deadline": "30/05/2021", "status": "50%"}
+        table.put_item(Item=item)
 
 if __name__ == "__main__":
     database = "todo_list"
     key = "id"
-
     create_table(database, key)
 
     table = dynamodb.Table(database)
+    #delete_table(table)
     data = [
     {
+        "id": "1",
         "assignee": "Thi",
         "deadline": "30/05/2021",
         "description": "Code Webservice",
@@ -59,6 +60,7 @@ if __name__ == "__main__":
         "task": "SOA"
     },
     {
+        "id": "2",
         "assignee": "Thi",
         "deadline": "29/05/2021",
         "description": "Code Database",
@@ -66,6 +68,7 @@ if __name__ == "__main__":
         "task": "SOA"
     },
     {
+        "id": "3",
         "assignee": "Thông",
         "deadline": "01/06/2021",
         "description": "Report",
@@ -73,6 +76,7 @@ if __name__ == "__main__":
         "task": "SOA"
     },
     {
+        "id": "4",
         "assignee": "Thi",
         "deadline": "01/06/2021",
         "description": "Code Web Application",
@@ -89,9 +93,8 @@ if __name__ == "__main__":
     create_table(database, key)
 
     table = dynamodb.Table(database)
-    data = [{"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}]
+    data = [{"id": "1"}, {"id": "2"}, {"id": "3"}, {"id": "4"}]
     insert_table(table, data)
     print("Done todo database_COUNT!")
-    #show_all_table(database)
-    #delete_table(table)
+
         

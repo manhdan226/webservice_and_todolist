@@ -38,13 +38,16 @@ def get_data_by_id(id):
 @app.route("/home")
 def home():
     data = get_data_from_webservice()
-    print(data)
+    #print(data)
     return render_template("index.html", data = data)
 
 @app.route("/<id>")
 def view(id):
-    data = get_data_by_id(id)
-    print(data)
-    return render_template("view.html", data = data)
+    if id != "favicon.ico":
+        data = get_data_by_id(id)
+        #print(data)
+        return render_template("view.html", data = data)
+    else:
+        return "Favicon"
 
 app.run(port=3001)
