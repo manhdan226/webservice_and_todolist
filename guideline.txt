@@ -1,0 +1,13 @@
+1/ Create vitualenv
+pip install vitualenv
+virtualenv todo_list
+cd todo_list/Scripts
+activate
+
+2/ Setup
+pip install -r requirement
+
+3/ Run
+python database.py
+python webservice.py
+python backend.py
