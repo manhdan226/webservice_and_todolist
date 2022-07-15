@@ -1,5 +1,5 @@
 1/ Create vitualenv
-pip install vitualenv
+pip install virtualenv
 virtualenv todo_list
 cd todo_list/Scripts
 activate
